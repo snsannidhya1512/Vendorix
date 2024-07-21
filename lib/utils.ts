@@ -8,18 +8,39 @@ export function cn(...inputs: ClassValue[]) {
 export function formatPrice(
   price: number | string,
   options: {
-    currency?: "INR";
+    currency?: "USD";
     notation?: Intl.NumberFormatOptions["notation"];
   } = {}
 ) {
-  const { currency = "INR", notation = "compact" } = options;
+  const { currency = "USD", notation = "compact" } = options;
 
   const numericPrice = typeof price === "string" ? parseFloat(price) : price;
 
-  return new Intl.NumberFormat("en-IN", {
+  return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency,
     notation,
     maximumFractionDigits: 2,
   }).format(numericPrice);
+  // }
+  // export function formatPrice(
+  //   price: number | string,
+  //   options: {
+  //     currency?: "USD";
+  //     notation?: Intl.NumberFormatOptions["notation"];
+  //   } = {}
+  // ) {
+  //   const { currency = "USD", notation = "compact" } = options;
+
+  //   const numericPrice = typeof price === "string" ? parseFloat(price) : price;
+
+  //   // Log the formatted price to debug
+  //   // console.log(`Formatting price: ${numericPrice}`);
+
+  //   return new Intl.NumberFormat("en-US", {
+  //     style: "currency",
+  //     currency,
+  //     notation,
+  //     maximumFractionDigits: 2,
+  //   }).format(numericPrice);
 }
